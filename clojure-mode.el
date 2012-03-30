@@ -125,6 +125,7 @@ Clojure to load that file."
     (modify-syntax-entry ?\[ "(]" table)
     (modify-syntax-entry ?\] ")[" table)
     (modify-syntax-entry ?^ "'" table)
+    (modify-syntax-entry ?@ "'" table)
     table))
 
 (defvar clojure-mode-abbrev-table nil
@@ -714,6 +715,7 @@ check for contextual indenting."
 ;; entries are subject to change
 (put 'implement 'clojure-backtracking-indent '(4 (2)))
 (put 'letfn 'clojure-backtracking-indent '((2) 2))
+(put 'macrolet 'clojure-backtracking-indent '((2) 2))
 (put 'proxy 'clojure-backtracking-indent '(4 4 (2)))
 (put 'reify 'clojure-backtracking-indent '((2)))
 (put 'deftype 'clojure-backtracking-indent '(4 4 (2)))
