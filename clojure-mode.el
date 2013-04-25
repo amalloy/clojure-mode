@@ -352,16 +352,18 @@ elements of a def* forms."
                 "\\(\\sw+\\)?")
        (1 font-lock-type-face)
        (2 font-lock-function-name-face nil t))
-      (,(concat "\\(\\(?:[a-z\.-]+/\\)?def\[a-z\]*-?\\)"
-                ;; Function declarations.
-                "\\>"
-                ;; Any whitespace
-                "[ \r\n\t]*"
-                ;; Possibly type or metadata
-                "\\(?:#?^\\(?:{[^}]*}\\|\\sw+\\)[ \r\n\t]*\\)*"
-                "\\(\\sw+\\)?")
-       (1 font-lock-keyword-face)
-       (2 font-lock-function-name-face nil t))
+      ;;;; This regex seems to include only false positives, so I've disabled it.
+      ;; (,(concat "\\(\\(?:[a-z\.-]+/\\)?def\[a-z\]*-?\\)"
+      ;;           ;; Function declarations.
+      ;;           "\\>"
+      ;;           ;; Any whitespace
+      ;;           "[ \r\n\t]*"
+      ;;           ;; Possibly type or metadata
+      ;;           "\\(?:#?^\\(?:{[^}]*}\\|\\sw+\\)[ \r\n\t]*\\)*"
+      ;;           "\\(\\sw+\\)?")
+      ;;  (1 font-lock-keyword-face)
+      ;;  (2 font-lock-function-name-face nil t))
+
       ;; Deprecated functions
       (,(concat
          "(\\(?:clojure.core/\\)?"
