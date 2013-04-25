@@ -715,13 +715,17 @@ check for contextual indenting."
 
 ;; clojure backtracking indent is experimental and the format for these
 ;; entries are subject to change
+(defvar clojure-deftype-indentation '(4 4 (2)))
 (put 'implement 'clojure-backtracking-indent '(4 (2)))
 (put 'letfn 'clojure-backtracking-indent '((2) 2))
 (put 'macrolet 'clojure-backtracking-indent '((2) 2))
-(put 'proxy 'clojure-backtracking-indent '(4 4 (2)))
+(put 'proxy 'clojure-backtracking-indent clojure-deftype-indentation)
 (put 'reify 'clojure-backtracking-indent '((2)))
-(put 'deftype 'clojure-backtracking-indent '(4 4 (2)))
-(put 'defrecord 'clojure-backtracking-indent '(4 4 (2)))
+(put 'deftype 'clojure-backtracking-indent clojure-deftype-indentation)
+(put 'defwrapped 'clojure-backtracking-indent clojure-deftype-indentation)
+(put 'delegating-deftype 'clojure-backtracking-indent clojure-deftype-indentation)
+(put 'defseq 'clojure-backtracking-indent clojure-deftype-indentation)
+(put 'defrecord 'clojure-backtracking-indent clojure-deftype-indentation)
 (put 'defprotocol 'clojure-backtracking-indent '(4 (2)))
 (put 'extend-type 'clojure-backtracking-indent '(4 (2)))
 (put 'extend-protocol 'clojure-backtracking-indent '(4 (2)))
