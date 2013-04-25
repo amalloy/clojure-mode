@@ -410,36 +410,16 @@ Retuns the problem overlay if such a position is found, otherwise nil."
 (defvar clojure-test-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c C-,") 'clojure-test-run-tests)
-    (define-key map (kbd "C-c ,")   'clojure-test-run-tests)
+;;    (define-key map (kbd "C-c ,")   'clojure-test-run-tests)
     (define-key map (kbd "C-c M-,") 'clojure-test-run-test)
     (define-key map (kbd "C-c C-'") 'clojure-test-show-result)
-    (define-key map (kbd "C-c '")   'clojure-test-show-result)
-    (define-key map (kbd "C-c k")   'clojure-test-clear)
-    (define-key map (kbd "C-c t")   'clojure-test-jump-to-implementation)
+;;    (define-key map (kbd "C-c '")   'clojure-test-show-result)
+;;    (define-key map (kbd "C-c k")   'clojure-test-clear)
+;;    (define-key map (kbd "C-c t")   'clojure-test-jump-to-implementation)
     (define-key map (kbd "M-p")     'clojure-test-previous-problem)
     (define-key map (kbd "M-n")     'clojure-test-next-problem)
     map)
   "Keymap for Clojure test mode.")
-
-;;;###autoload
-(define-minor-mode clojure-test-mode
-  "A minor mode for running Clojure tests."
-  nil " Test" clojure-test-mode-map
-  (when (slime-connected-p)
-    (clojure-test-load-reporting)))
-
-(add-hook 'slime-connected-hook 'clojure-test-load-reporting)
-
-;;;###autoload
-(progn
-  (defun clojure-test-maybe-enable ()
-    "Enable clojure-test-mode if the current buffer contains a namespace
-with a \"test.\" bit on it."
-    (let ((ns (clojure-find-package))) ; defined in clojure-mode.el
-      (when (and ns (string-match "test\\(\\.\\|$\\)" ns))
-        (save-window-excursion
-          (clojure-test-mode t)))))
-  (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable))
 
 (provide 'clojure-test-mode)
 ;;; clojure-test-mode.el ends here
